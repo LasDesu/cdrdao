@@ -28,7 +28,7 @@
 #include "CdDevice.h"
 #include "ConfigManager.h"
 #include "MessageBox.h"
-#include "trackdb/TempFileManager.h"
+#include "TempFileManager.h"
 
 PreferencesDialog::PreferencesDialog(BaseObjectType* cobject,
 				     const Glib::RefPtr<Gtk::Builder>& builder) :

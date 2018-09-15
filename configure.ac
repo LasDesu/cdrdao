@@ -169,8 +169,8 @@ fi
 dnl Checks for pccts parser generator
 en_pccts="no"
 if test "$pcctsbin" = default; then
-  antlr_path='$(srcdir)/../pccts/antlr/antlr'
-  dlg_path='$(srcdir)/../pccts/dlg/dlg'
+  antlr_path='$(builddir)/../pccts/antlr/antlr'
+  dlg_path='$(builddir)/../pccts/dlg/dlg'
 
 
   en_pccts="yes"
@@ -180,8 +180,8 @@ else
 
   if test $antlr_path = "no" || test $dlg_path = "no"; then
     AC_MSG_WARN([PCCTS: antlr or dlg not found in path, using own.])
-    antlr_path='$(srcdir)/../pccts/antlr/antlr'
-    dlg_path='$(srcdir)/../pccts/dlg/dlg'
+    antlr_path='$(builddir)/../pccts/antlr/antlr'
+    dlg_path='$(builddir)/../pccts/dlg/dlg'
     en_pccts="yes"
   fi
 fi
@@ -189,8 +189,8 @@ fi
 
 if test "$pcctsinc" = default; then
   pcctsinc='$(srcdir)/../pccts/h'
-  antlr_path='$(srcdir)/../pccts/antlr/antlr'
-  dlg_path='$(srcdir)/../pccts/dlg/dlg'
+  antlr_path='$(builddir)/../pccts/antlr/antlr'
+  dlg_path='$(builddir)/../pccts/dlg/dlg'
   en_pccts="yes"
 else
   ac_save_CPPFLAGS="$CPPFLAGS"
@@ -198,7 +198,7 @@ else
   AC_CHECK_HEADER(pcctscfg.h,,[
     AC_MSG_WARN([PCCTS: headers not found in path, using own.])
     pcctsinc='$(srcdir)/../pccts/h'
-    antlr_path='$(srcdir)/../pccts/antlr/antlr'
+    antlr_path='$(builddir)/../pccts/antlr/antlr'
     en_pccts="yes"])
   CPPFLAGS="$ac_save_CPPFLAGS"
 fi

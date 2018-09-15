@@ -47,8 +47,8 @@ EXTRA_gcdmaster_SOURCES =	\
 	SoundIF-none.cc 	\
 	SoundIF-solaris.cc
 
-resources.c: ui/gcdmaster.gresource.xml ui/*.ui ui/*.png
-	glib-compile-resources --target=$@ --sourcedir=ui  --generate-source $<
+resources.c: $(srcdir)/ui/gcdmaster.gresource.xml $(srcdir)/ui/*.ui $(srcdir)/ui/*.png
+	glib-compile-resources --target=$@ --sourcedir=$(srcdir)/ui  --generate-source $<
 
 gladedir = $(datadir)/gcdmaster/glade
 glade_DATA = 			\
