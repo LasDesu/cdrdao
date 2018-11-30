@@ -189,6 +189,7 @@ public:
   void closeData();
 
   const char* curFilename();
+  TrackData::FileType curFileType();
 
 private:
   const Track *track_;

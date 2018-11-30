@@ -1966,6 +1966,16 @@ const char* TrackReader::curFilename()
     return NULL;
 }
 
+TrackData::FileType TrackReader::curFileType()
+{
+  const TrackData* td = reader.trackData();
+
+  if (td)
+    return td->filetype();
+  else
+    return TrackData::RAW;
+}
+
 SubTrackIterator::SubTrackIterator(const Track *t)
 {
   track_ = t;

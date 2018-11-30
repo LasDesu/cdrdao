@@ -83,6 +83,7 @@ public:
   const char *filename() const             { return filename_; }
   unsigned long startPos() const           { return startPos_; }
   unsigned long length() const;
+  FileType filetype() const                { return fileType_; }
 
   // sets/returns flag for swapping expected byte order of audio samples
   void swapSamples(int f)                  { swapSamples_ = f != 0 ? 1 : 0; }

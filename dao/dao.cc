@@ -439,6 +439,7 @@ static void *reader(void *args)
   const Toc *toc = ((ReaderArgs*)args)->toc;
   CdrDriver *cdr = ((ReaderArgs*)args)->cdr;
   int swap = ((ReaderArgs*)args)->swap;
+  int swaprawaudio = 0;
   BufferHeader *header = ((ReaderArgs*)args)->header;
   long lba = ((ReaderArgs*)args)->startLba + 150; // used to encode the sector
                                                   // header (MSF)
@@ -467,7 +468,8 @@ static void *reader(void *args)
     }
     encodingMode = cdr->encodingMode();
   }
-  log_message(4, "Swap: %d", swap);
+  log_message(3, "Swap: %d", swap);
+  log_message(3, "Swap RAW audio: %d", swaprawaudio);
 
   TrackIterator itr(toc);
   TrackReader reader;
@@ -531,7 +533,8 @@ static void *reader(void *args)
     tact += rn;
 
     if (cdr != NULL &&
-	((track->type() == TrackData::AUDIO && swap) ||
+	((track->type() == TrackData::AUDIO && swap &&
+	 (reader.curFileType() != TrackData::RAW || swaprawaudio)) ||
 	 (encodingMode == 0 && cdr->bigEndianSamples() == 0))) {
       // swap audio data 
       long blockLen = cdr->blockSize(dataMode, subChanMode);
